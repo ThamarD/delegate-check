@@ -4,7 +4,7 @@
 
 Basic install:
 ```sh
-git clone https://github.com/geopsllc/delegate-check
+git clone https://github.com/geopsllc/delegate-check -b productivity-statistics
 cd delegate-check
 bash install.sh
 nano config.py
@@ -20,6 +20,7 @@ Frontend setup:
 ## General
 
 This is a DPoS Monitoring Tool for Multiple Delegates Across Multiple Networks.
+- This release works only with alessiodf's productivity-statistics enabled APIs.
 - Supports Core v2 only.
 - Requires Python 3.6.7 or above - native on Ubuntu 18.04.
 - The backend is async coded so most api calls are made almost simultaneously.
