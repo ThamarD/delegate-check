@@ -73,7 +73,7 @@
         success: function (data) {
             var div = document.getElementById("main");
             $('div').append(arrayToTable(Papa.parse(data, {skipEmptyLines: true}).data));
-            $('div').append("<center>*Yield: Productivity calculated over the last 100 rounds.</center>");
+            $('div').append("<center>*Yield: Productivity calculated over the last day.</center>");
         }
     });
 
