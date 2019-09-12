@@ -9,7 +9,7 @@ cd delegate-check
 bash install.sh
 nano config.py
 ```
-- change config.py with productivity-statistics enabled nodes
+- change config.py with productivity-statistics enabled nodes and add your delegates
 - test the script in cli mode by running ```python3 delcheck.py```
 
 Frontend setup:
