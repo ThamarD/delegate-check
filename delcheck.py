@@ -68,8 +68,6 @@ async def del_check(network,delegate):
     else:
         forging = 'no'
 
-    missed = 0
-    forged = 0
     rank = str(del_info['data']['rank'])
     timestamp = del_info['data']['blocks']['last']['timestamp']['unix']
     utc_remote = datetime.utcfromtimestamp(timestamp)
@@ -92,24 +90,10 @@ async def del_check(network,delegate):
             await notifications(network + ' delegate ' + delegate + '  missed a block!')
             savedState[network][delegate] = 'dirty'
 
-    if net_round > cur_round + 1:
-        missed += net_round - cur_round - 1
-    else:
-        forged += 1
+    if 'statistics' not in del_info['data']:
+        return
 
-    for i in range(0,total_rounds - 1):
-        cur_round = get_round(del_blocks['data'][i]['height'],network)
-        prev_round = get_round(del_blocks['data'][i + 1]['height'],network)
-        if prev_round < cur_round - 1:
-            if cur_round - prev_round - 1 > total_rounds - missed - forged:
-                missed += total_rounds - missed - forged
-                break
-            else:
-                missed += cur_round - prev_round - 1
-        else:
-            forged += 1
-
-    prod = str(round((forged * 100)/(forged + missed)))
+    prod = str(round(del_info['data']['statistics']['day']['rounds']['productivity'] * 100))
 
     print('Network: ' + network + ' | Delegate: ' + delegate + ' | Rank: ' + rank + ' | Forging: ' + forging + ' | Last Block: ' + delta + ' min ago | State: ' + state + ' | Yield: ' + prod + '%')
     csv.write(network + ',' + delegate + ',' + rank + ',' + forging + ',' + delta + ' min ago,' + state + ',' + prod + '%\n')

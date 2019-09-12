@@ -7,6 +7,7 @@ phone = '+xxxxxxxxxxx'
 
 # Delegate Names
 # Leave only the networks and delegates that you use!
+
 delegates = {
     'Ark':['name'],
     'DArk':['name'],
@@ -22,9 +23,9 @@ delegates = {
 
 # Network APIs
 nodes = {
-    'Ark':'https://explorer.ark.io/api',
+    'Ark':'https://ark-api.geops.net/api',
     'DArk':'https://dexplorer.ark.io/api',
-    'Qredit':'https://qredit.cloud/api',
+    'Qredit':'https://xqr-api.geops.net/api',
     'Blockpool':'http://api.mainnet.blockpool.io:9031/api',
     'Persona':'https://explorer.persona.im:8443/api/v2',
     'Phantom':'https://explorer.phantom.org:8443/api/v2',
